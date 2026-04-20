@@ -1,6 +1,6 @@
 'use client'
 
-import { useEffect, useState } from 'react'
+import { useState } from 'react'
 import Image from 'next/image'
 
 interface Post {
@@ -9,6 +9,10 @@ interface Post {
   pubDate: string
   description: string
   thumbnail: string
+}
+
+interface BlogClientProps {
+  posts: Post[]
 }
 
 const CATEGORIES: Record<string, string> = {
@@ -46,44 +50,11 @@ function getExcerpt(content: string, max = 120): string {
   return text.length > max ? text.slice(0, max).trim() + '…' : text
 }
 
-export default function BlogClient() {
-  const [posts, setPosts] = useState<Post[]>([])
-  const [loading, setLoading] = useState(true)
-  const [error, setError] = useState(false)
+export default function BlogClient({ posts }: BlogClientProps) {
   const [showAll, setShowAll] = useState(false)
 
-  useEffect(() => {
-    // Fetch via our own API route (avoids CORS)
-    fetch('/api/posts')
-      .then(r => r.json())
-      .then(data => {
-        if (Array.isArray(data) && data.length > 0) {
-          setPosts(data)
-        } else {
-          setError(true)
-        }
-      })
-      .catch(() => setError(true))
-      .finally(() => setLoading(false))
-  }, [])
-
-  if (loading) return (
-    <div style={{ textAlign: 'center', padding: '80px 24px' }}>
-      <div style={{ display: 'flex', justifyContent: 'center', gap: '6px', marginBottom: '16px' }}>
-        {[0, 1, 2].map(i => (
-          <div key={i} style={{
-            width: '8px', height: '8px', borderRadius: '50%',
-            background: '#C9A96E', opacity: 0.4,
-            animation: `pulse 1.4s ease-in-out ${i * 0.2}s infinite`,
-          }} />
-        ))}
-      </div>
-      <p style={{ fontSize: '14px', color: '#9A9A90' }}>Ladataan kirjoituksia...</p>
-      <style>{`@keyframes pulse { 0%,100%{opacity:.3;transform:scale(1)} 50%{opacity:1;transform:scale(1.2)} }`}</style>
-    </div>
-  )
-
-  if (error || posts.length === 0) return (
+  // Fallback when Substack fetch failed on the server
+  if (posts.length === 0) return (
     <div style={{ textAlign: 'center', padding: '80px 24px' }}>
       <h3 style={{ fontFamily: 'Georgia,serif', fontSize: '22px', fontWeight: 400, marginBottom: '12px' }}>
         Lue kaikki kirjoitukset Substackissa
