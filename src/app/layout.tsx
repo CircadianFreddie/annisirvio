@@ -34,6 +34,9 @@ export const metadata: Metadata = {
       },
     ],
   },
+  other: {
+    'fb:app_id': '1753230098977661',
+  },
   twitter: {
     card: 'summary_large_image',
     title: 'Anni Sirviö — Hormonaalinen painonpudotus & rasvalukko',
