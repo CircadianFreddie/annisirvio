@@ -31,7 +31,14 @@ export default function AnniPage() {
           </p>
         </div>
         <div style={{ position: 'relative', overflow: 'hidden', minHeight: '500px' }}>
-          <Image src="/images/anni-bio.jpg" alt="Anni Sirviö" fill style={{ objectFit: 'cover', objectPosition: 'top' }} />
+          <Image
+            src="/images/anni-bio.jpg"
+            alt="Anni Sirviö"
+            fill
+            priority
+            sizes="(max-width: 900px) 100vw, 50vw"
+            style={{ objectFit: 'cover', objectPosition: 'top' }}
+          />
           <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(to right, var(--dark) 0%, transparent 25%)' }} />
         </div>
       </section>
