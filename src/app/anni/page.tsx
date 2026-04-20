@@ -39,11 +39,11 @@ export default function AnniPage() {
       {/* INTRO */}
       <section style={{ padding: '96px 24px', background: '#fff' }}>
         <div style={{ maxWidth: '1100px', margin: '0 auto', display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '72px', alignItems: 'start' }} className="two-col">
-          <div style={{ position: 'relative' }}>
-            <Image src="/images/anni-why.jpg" alt="Anni Sirviö" width={540} height={520} style={{ width: '100%', height: '520px', objectFit: 'cover', objectPosition: 'top', borderRadius: '4px' }} />
+          <div style={{ position: 'relative', width: '100%', height: '520px', borderRadius: '4px', overflow: 'hidden' }}>
+            <Image src="/images/tietoa-annista.jpg" alt="Anni Sirviö" fill quality={95} sizes="(max-width: 900px) 100vw, 550px" style={{ objectFit: 'cover', objectPosition: 'top' }} />
             <div style={{ position: 'absolute', bottom: 0, left: 0, right: 0, background: 'linear-gradient(to top, rgba(26,26,24,0.95) 0%, transparent 100%)', padding: '32px 28px 28px', borderRadius: '0 0 4px 4px' }}>
               <p style={{ fontFamily: 'var(--font-serif)', fontStyle: 'italic', fontSize: '17px', color: 'var(--gold-light)', lineHeight: 1.5 }}>
-                "Jokainen nainen ansaitsee olla terve ja onnellinen omassa kehossaan."
+                ”Jokainen nainen ansaitsee olla terve ja onnellinen omassa kehossaan.”
               </p>
             </div>
           </div>
@@ -56,7 +56,7 @@ export default function AnniPage() {
               Olen elänyt läpi jokaisen dieetin, jokaisen vatsakivun ja jokaisen <em>hormonimyrskyn.</em>
             </h2>
             <p style={{ fontSize: '16px', lineHeight: 1.85, color: 'var(--muted)', marginBottom: '16px' }}>
-              Reilu kymmenen vuotta sitten istuin töissä kampaamossa, ahdistuneena ja turvonneena, yrittäen selvitä päivästä toiseen vatsakipujen, uupumuksen ja painonhallinnan kanssa. Kuvittelin tekeväni "oikein" — söin kevyesti, treenasin kovaa ja noudatin dieetti-kuureja.
+              Reilu kymmenen vuotta sitten istuin töissä kampaamossa, ahdistuneena ja turvonneena, yrittäen selvitä päivästä toiseen vatsakipujen, uupumuksen ja painonhallinnan kanssa. Kuvittelin tekeväni ”oikein” — söin kevyesti, treenasin kovaa ja noudatin dieetti-kuureja.
             </p>
             <p style={{ fontSize: '16px', lineHeight: 1.85, color: 'var(--muted)', marginBottom: '16px' }}>
               Mutta mitä enemmän yritin, sitä pahemmin kehoni oireili. Se oli jatkuvaa selviytymistä.
@@ -161,7 +161,7 @@ export default function AnniPage() {
             <span style={{ width: '24px', height: '1px', background: 'var(--gold)', display: 'block' }} />
           </div>
           <p style={{ fontFamily: 'var(--font-serif)', fontStyle: 'italic', fontSize: 'clamp(24px, 3vw, 36px)', color: '#fff', lineHeight: 1.4, marginBottom: '24px', letterSpacing: '-0.01em' }}>
-            "Uskon, että muutos tapahtuu, kun yhdistämme ymmärryksen kehostamme konkreettisiin tekoihin."
+            ”Uskon, että muutos tapahtuu, kun yhdistämme ymmärryksen kehostamme konkreettisiin tekoihin.”
           </p>
           <p style={{ fontSize: '14px', color: 'rgba(255,255,255,0.4)', letterSpacing: '0.06em', textTransform: 'uppercase' }}>— Anni Sirviö</p>
         </div>
