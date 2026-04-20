@@ -276,18 +276,76 @@ export default function Home() {
               Katso masterclass →
             </a>
           </div>
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: '3px' }} className="ba-grid">
+
+          {/* Anni oma muutoskuva — koko leveys */}
+          <div style={{ marginBottom: '4px', borderRadius: '6px', overflow: 'hidden' }}>
+            <Image
+              src="/images/anni-why.jpg"
+              alt="Anni Sirviö — oma muutos"
+              width={1100}
+              height={500}
+              style={{ width: '100%', height: '400px', objectFit: 'cover', objectPosition: 'center 20%' }}
+            />
+          </div>
+
+          {/* Asiakkaiden muutoskuvat — 4 saraketta, portrait-muoto */}
+          <div style={{
+            display: 'grid',
+            gridTemplateColumns: 'repeat(4, 1fr)',
+            gap: '3px',
+            marginBottom: '3px',
+          }} className="ba-grid">
             {[
-              '/images/ba-1.jpg', '/images/ba-2.jpg',
-              '/images/ba-3.jpg', '/images/ba-4.jpg',
-              '/images/ba-5.jpg', '/images/ba-6.jpg',
-              '/images/ba-7.jpg', '/images/ba-8.jpg',
-            ].map((src, i) => (
+              { src: '/images/ba-1.jpg', pos: 'center' },
+              { src: '/images/ba-2.jpg', pos: 'center' },
+              { src: '/images/ba-3.jpg', pos: 'center top' },
+              { src: '/images/ba-4.jpg', pos: 'center' },
+            ].map((img, i) => (
               <div key={i} style={{ overflow: 'hidden', borderRadius: '4px' }}>
-                <Image src={src} alt={`Muutos ${i + 1}`} width={280} height={280} style={{ width: '100%', aspectRatio: '1/1', objectFit: 'cover' }} />
+                <Image
+                  src={img.src}
+                  alt={`Asiakasmuutos ${i + 1}`}
+                  width={280}
+                  height={420}
+                  style={{
+                    width: '100%',
+                    aspectRatio: '3/4',
+                    objectFit: 'cover',
+                    objectPosition: img.pos,
+                  }}
+                />
               </div>
             ))}
           </div>
+          <div style={{
+            display: 'grid',
+            gridTemplateColumns: 'repeat(4, 1fr)',
+            gap: '3px',
+          }} className="ba-grid">
+            {[
+              { src: '/images/ba-5.jpg', pos: 'center' },
+              { src: '/images/ba-6.jpg', pos: 'center' },
+              { src: '/images/ba-7.jpg', pos: 'center top' },
+              { src: '/images/ba-8.jpg', pos: 'center' },
+            ].map((img, i) => (
+              <div key={i} style={{ overflow: 'hidden', borderRadius: '4px' }}>
+                <Image
+                  src={img.src}
+                  alt={`Asiakasmuutos ${i + 5}`}
+                  width={280}
+                  height={420}
+                  style={{
+                    width: '100%',
+                    aspectRatio: '3/4',
+                    objectFit: 'cover',
+                    objectPosition: img.pos,
+                  }}
+                />
+              </div>
+            ))}
+          </div>
+
+          {/* CTA box */}
           <div style={{ marginTop: '40px', background: 'var(--dark)', borderRadius: '8px', padding: '40px', textAlign: 'center' }}>
             <h3 style={{ fontFamily: 'var(--font-serif)', fontSize: 'clamp(22px, 2.5vw, 32px)', color: '#fff', fontWeight: 400, marginBottom: '8px' }}>
               Haluatko ymmärtää, miksi kehosi ei päästä rasvasta irti?
