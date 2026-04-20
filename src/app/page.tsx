@@ -7,7 +7,7 @@ const MASTERCLASS_URL = 'https://eroonrasvalukosta.fi/webinar/registration/68654
 export default function Home() {
   return (
     <>
-      {/* HERO */}
+     {/* HERO */}
       <section style={{
         minHeight: 'calc(100vh - 64px)',
         background: 'var(--dark)',
@@ -23,46 +23,45 @@ export default function Home() {
           position: 'relative', zIndex: 1,
           maxWidth: '600px',
         }}>
+          {/* Eyebrow — kohderyhmä heti näkyviin */}
           <div style={{
             display: 'inline-flex', alignItems: 'center', gap: '8px',
             fontSize: '12px', letterSpacing: '0.12em', textTransform: 'uppercase',
-            color: 'var(--gold)', marginBottom: '28px',
+            color: 'var(--gold)', marginBottom: '24px',
           }}>
             <span style={{ width: '24px', height: '1px', background: 'var(--gold)', display: 'block' }} />
-            FBF-metodi
+            Naisille joiden paino jumittaa — vaikka yrittävät kaikkensa
           </div>
 
+          {/* H1 — tunne + hyöty yhdessä */}
           <h1 style={{
             fontFamily: 'var(--font-serif)',
-            fontSize: 'clamp(34px, 3.8vw, 54px)',
+            fontSize: 'clamp(32px, 3.8vw, 52px)',
             fontWeight: 400, lineHeight: 1.12,
-            color: '#fff', marginBottom: '24px',
+            color: '#fff', marginBottom: '20px',
             letterSpacing: '-0.02em',
           }}>
-            Et tarvitse<br />
-            rääkkidieettiä.<br />
-            Tarvitset kehollesi<br />
-            <em style={{ color: 'var(--gold-light)' }}>turvan tunteen.</em>
+            Kehosi ei ole rikki.<br />
+            Se suojelee itseään —<br />
+            <em style={{ color: 'var(--gold-light)' }}>ja voit muuttaa sen.</em>
           </h1>
 
+          {/* Konkreettinen hyöty — arjen kieli */}
           <p style={{
             fontSize: '17px', lineHeight: 1.75,
-            color: 'rgba(255,255,255,0.6)',
-            marginBottom: '36px', maxWidth: '460px',
+            color: 'rgba(255,255,255,0.65)',
+            marginBottom: '12px', maxWidth: '480px',
           }}>
-            Jos painonhallinta jumittaa ja hormonitoiminta ailahtele — ongelma ei ole tahdonvoimasi. Kehosi elää hälytystilassa.
+            Rasvalukko, hormonit ja insuliiniresistenssi selittävät, miksi dieetit eivät pure — vaikka teet kaiken "oikein". Masterclassissa ymmärrät vihdoin miksi, ja saat ensimmäisen biologisesti perustellun askeleen.
           </p>
 
-          <div style={{ display: 'flex', flexWrap: 'wrap', gap: '8px', marginBottom: '36px' }}>
-            {['Rasvalukko', 'Hormonaalinen painonpudotus', 'Insuliiniresistenssi'].map(tag => (
-              <span key={tag} style={{
-                fontSize: '11px', letterSpacing: '0.06em', textTransform: 'uppercase',
-                color: 'rgba(255,255,255,0.4)',
-                border: '1px solid rgba(255,255,255,0.12)',
-                padding: '5px 12px', borderRadius: '100px',
-              }}>{tag}</span>
-            ))}
-          </div>
+          {/* Pieni luottamusrivi CTA:n yläpuolella */}
+          <p style={{
+            fontSize: '13px', color: 'rgba(255,255,255,0.4)',
+            marginBottom: '28px',
+          }}>
+            Maksuton · 35 000+ naista autettu · Ei uutta kuuripakettia
+          </p>
 
           <div style={{ display: 'flex', alignItems: 'center', gap: '16px', flexWrap: 'wrap' }}>
             <a href={MASTERCLASS_URL} target="_blank" rel="noopener noreferrer" style={{
@@ -72,12 +71,12 @@ export default function Home() {
             }}>
               Katso maksuton masterclass
             </a>
-            <Link href="#why" style={{
-              color: 'rgba(255,255,255,0.55)', fontSize: '14px',
+            <a href="#why" style={{
+              color: 'rgba(255,255,255,0.5)', fontSize: '14px',
               display: 'inline-flex', alignItems: 'center', gap: '6px',
             }}>
-              Miksi aiemmat keinot eivät toimineet →
-            </Link>
+              Ymmärrä, miksi keho jumittaa →
+            </a>
           </div>
         </div>
 
@@ -85,7 +84,7 @@ export default function Home() {
         <div style={{ position: 'relative', overflow: 'hidden' }} className="hero-img">
           <Image
             src="/images/anni-hero.jpg"
-            alt="Anni Sirviö"
+            alt="Anni Sirviö — naisten hyvinvointivalmentaja"
             fill
             style={{ objectFit: 'cover', objectPosition: 'top center' }}
             priority
@@ -109,12 +108,12 @@ export default function Home() {
           justifyContent: 'center', gap: '40px', flexWrap: 'wrap',
         }}>
           {[
+            { num: '35 000+', label: 'naista autettu vuodesta 2014' },
             { num: '1 300+', label: 'tilaajaa Substackissa' },
-            { num: '10+', label: 'vuotta naisten aineenvaihdunnan parissa' },
-            { num: 'Satoja', label: 'muutostarinoita' },
+            { num: '10+', label: 'vuotta naisten hormonaalisen terveyden parissa' },
           ].map((item, i) => (
             <div key={i} style={{ display: 'flex', alignItems: 'center', gap: '8px', fontSize: '13px', color: 'var(--muted)' }}>
-              <strong style={{ color: 'var(--text)' }}>{item.num}</strong> {item.label}
+              <strong style={{ color: 'var(--text)', fontWeight: 600 }}>{item.num}</strong> {item.label}
             </div>
           ))}
         </div>
