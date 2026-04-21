@@ -22,11 +22,8 @@ export default function Nav() {
         display: 'flex', alignItems: 'center', justifyContent: 'space-between',
       }}>
         {/* Logo */}
-        <Link href="/" style={{ display: 'flex', flexDirection: 'column' }}>
-          <span style={{ fontSize: '15px', fontWeight: 600 }}>Anni Sirviö</span>
-          <span style={{ fontSize: '11px', color: 'var(--muted)', letterSpacing: '0.05em', textTransform: 'uppercase' }}>
-            Naisten hyvinvointi
-          </span>
+        <Link href="/" style={{ display: 'flex', alignItems: 'center' }}>
+          <span style={{ fontFamily: 'var(--font-serif)', fontSize: '22px', fontWeight: 500, letterSpacing: '-0.01em' }}>Anni Sirviö</span>
         </Link>
 
         {/* Desktop links */}
