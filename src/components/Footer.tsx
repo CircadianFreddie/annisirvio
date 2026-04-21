@@ -2,6 +2,7 @@
 
 import Link from 'next/link'
 import { useEffect } from 'react'
+import { usePathname } from 'next/navigation'
 
 const SOCIAL = [
   {
@@ -42,6 +43,9 @@ const SOCIAL = [
 ]
 
 export default function Footer() {
+  const pathname = usePathname()
+  const isChallenge = pathname === '/haaste'
+
   useEffect(() => {
     const script = document.createElement('script')
     script.src = 'https://eomail8.com/form/fb5fc404-3626-11f1-97b9-eb425289454e.js'
@@ -57,6 +61,7 @@ export default function Footer() {
     <footer style={{ background: 'var(--dark)', borderTop: '1px solid rgba(255,255,255,0.06)' }}>
 
       {/* NEWSLETTER */}
+      {!isChallenge && (
       <div style={{ borderBottom: '1px solid rgba(255,255,255,0.06)', padding: '56px 24px' }}>
         <div style={{ maxWidth: '1100px', margin: '0 auto', display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '48px', alignItems: 'center' }} className="footer-nl-grid">
           <div>
@@ -74,6 +79,7 @@ export default function Footer() {
           <div id="eo-form-container" style={{ minHeight: '80px' }} />
         </div>
       </div>
+      )}
 
       {/* SOME-IKONIT */}
       <div style={{ borderBottom: '1px solid rgba(255,255,255,0.06)', padding: '32px 24px' }}>
