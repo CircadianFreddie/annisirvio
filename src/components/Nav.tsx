@@ -23,7 +23,7 @@ export default function Nav() {
       }}>
         {/* Logo */}
         <Link href="/" style={{ display: 'flex', alignItems: 'center' }}>
-          <span style={{ fontFamily: 'var(--font-serif)', fontSize: '22px', fontWeight: 500, letterSpacing: '-0.01em' }}>Anni Sirviö</span>
+          <span style={{ fontFamily: 'var(--font-serif)', fontSize: '17px', fontWeight: 400, letterSpacing: '0.22em', textTransform: 'uppercase' }}>Anni Sirviö</span>
         </Link>
 
         {/* Desktop links */}
