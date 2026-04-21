@@ -1,7 +1,7 @@
 'use client'
 
+import { useEffect } from 'react'
 import Image from 'next/image'
-import Script from 'next/script'
 
 const START_DATE = '4.5.2026'
 const COHORT_LABEL = `Yhteislähtö ${START_DATE}`
@@ -83,6 +83,17 @@ function JoinButton({ label = 'Liity ilmaiseksi mukaan', variant = 'gold' }: { l
 }
 
 export default function HaastePage() {
+  useEffect(() => {
+    const script = document.createElement('script')
+    script.src = 'https://eomail8.com/form/6f86efbe-3d53-11f1-854d-997824e90abd.js'
+    script.async = true
+    script.setAttribute('data-form', '6f86efbe-3d53-11f1-854d-997824e90abd')
+    const container = document.getElementById('eo-haaste-form')
+    if (container && !container.hasChildNodes()) {
+      container.appendChild(script)
+    }
+  }, [])
+
   return (
     <>
       {/* HERO */}
@@ -488,13 +499,7 @@ export default function HaastePage() {
               textAlign: 'left',
             }}
           >
-            <div data-form="6f86efbe-3d53-11f1-854d-997824e90abd" />
-            <Script
-              src="https://eomail8.com/form/6f86efbe-3d53-11f1-854d-997824e90abd.js"
-              strategy="afterInteractive"
-              async
-              data-form="6f86efbe-3d53-11f1-854d-997824e90abd"
-            />
+            <div id="eo-haaste-form" style={{ minHeight: '80px' }} />
           </div>
         </div>
       </section>
@@ -514,6 +519,29 @@ export default function HaastePage() {
         @media (max-width: 600px) {
           .value-grid { grid-template-columns: 1fr !important; }
           .testimonial-grid { column-count: 1 !important; }
+        }
+        #eo-haaste-form input {
+          background: #fff !important;
+          border: 1px solid rgba(0,0,0,0.15) !important;
+          color: var(--text) !important;
+          border-radius: 6px !important;
+          padding: 12px 16px !important;
+          font-size: 15px !important;
+          width: 100% !important;
+          margin-bottom: 10px !important;
+          font-family: inherit !important;
+        }
+        #eo-haaste-form button {
+          background: var(--gold) !important;
+          color: var(--dark) !important;
+          border: none !important;
+          border-radius: 6px !important;
+          padding: 14px 24px !important;
+          font-weight: 600 !important;
+          font-size: 15px !important;
+          cursor: pointer !important;
+          width: 100% !important;
+          font-family: inherit !important;
         }
       `}</style>
     </>
