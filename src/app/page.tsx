@@ -53,8 +53,8 @@ export default function Home() {
             <p style={{ fontSize: '17px', lineHeight: 1.8, color: 'var(--muted)', marginBottom: '32px' }}>Moni nainen tekee kaiken oikein — ja silti jää paikalleen. Syy ei ole itsekurin puute.</p>
             <a href={MC} target="_blank" rel="noopener noreferrer" style={{ background: 'var(--gold)', color: 'var(--dark)', padding: '13px 26px', borderRadius: '6px', fontSize: '14px', fontWeight: 600, display: 'inline-block' }}>Katso maksuton masterclass</a>
           </div>
-          <div style={{ borderRadius: '4px', overflow: 'hidden' }}>
-            <Image src="/images/anni-why.jpg" alt="Anni Sirviö" width={540} height={560} style={{ width: '100%', height: '560px', objectFit: 'cover', objectPosition: 'top' }} />
+          <div style={{ borderRadius: '4px', overflow: 'hidden', position: 'relative', aspectRatio: '1/1' }}>
+            <Image src="/images/anni-why.jpg" alt="Anni Sirviö" fill sizes="(max-width: 900px) 100vw, 540px" style={{ objectFit: 'cover', objectPosition: 'top' }} />
           </div>
         </div>
       </section>
