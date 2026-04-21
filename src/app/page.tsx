@@ -10,7 +10,7 @@ export default function Home() {
       {/* HERO */}
       <section style={{ minHeight: 'calc(100vh - 64px)', background: 'var(--dark)', display: 'grid', gridTemplateColumns: '1fr 1fr', alignItems: 'stretch', overflow: 'hidden' }} className="hero-section">
         <div style={{ padding: '80px 48px', display: 'flex', flexDirection: 'column', justifyContent: 'center', zIndex: 1 }}>
-          <div style={{ fontSize: '12px', letterSpacing: '0.12em', textTransform: 'uppercase', color: 'var(--gold)', marginBottom: '24px', display: 'flex', alignItems: 'center', gap: '8px' }}>
+          <div className="hero-eyebrow" style={{ fontSize: '12px', letterSpacing: '0.12em', textTransform: 'uppercase', color: 'var(--gold)', marginBottom: '24px', display: 'flex', alignItems: 'center', gap: '8px' }}>
             <span style={{ width: '24px', height: '1px', background: 'var(--gold)', display: 'block' }} />
             Naisille joiden paino jumittaa — vaikka yrittävät kaikkensa
           </div>
@@ -21,7 +21,7 @@ export default function Home() {
             Rasvalukko, hormonit ja insuliiniresistenssi selittävät, miksi dieetit eivät pure. Masterclassissa ymmärrät vihdoin miksi.
           </p>
           <p style={{ fontSize: '13px', color: 'rgba(255,255,255,0.4)', marginBottom: '28px' }}>Maksuton · 35 000+ naista autettu · Ei uutta kuuripakettia</p>
-          <div style={{ display: 'flex', gap: '16px', flexWrap: 'wrap' }}>
+          <div className="hero-ctas" style={{ display: 'flex', gap: '16px', flexWrap: 'wrap' }}>
             <a href={MC} target="_blank" rel="noopener noreferrer" style={{ background: 'var(--gold)', color: 'var(--dark)', padding: '14px 28px', borderRadius: '6px', fontSize: '14px', fontWeight: 600 }}>Katso maksuton masterclass</a>
             <a href="#why" style={{ color: 'rgba(255,255,255,0.5)', fontSize: '14px', display: 'flex', alignItems: 'center', gap: '6px' }}>Ymmärrä, miksi keho jumittaa →</a>
           </div>
@@ -34,7 +34,7 @@ export default function Home() {
 
       {/* TRUST BAR */}
       <div style={{ background: 'var(--cream)', borderBottom: '1px solid var(--border)', padding: '18px 24px' }}>
-        <div style={{ maxWidth: '1100px', margin: '0 auto', display: 'flex', justifyContent: 'center', gap: '40px', flexWrap: 'wrap' }}>
+        <div className="trust-bar" style={{ maxWidth: '1100px', margin: '0 auto', display: 'flex', justifyContent: 'center', gap: '40px', flexWrap: 'wrap' }}>
           {[{ num: '35 000+', label: 'naista autettu' }, { num: '1 300+', label: 'Substack-tilaajaa' }, { num: '10+', label: 'vuotta alalla' }].map((s, i) => (
             <div key={i} style={{ fontSize: '13px', color: 'var(--muted)', display: 'flex', gap: '8px' }}>
               <strong style={{ color: 'var(--text)' }}>{s.num}</strong>{s.label}
@@ -147,8 +147,16 @@ export default function Home() {
       <style>{`
         @media (max-width: 900px) {
           .hero-section { grid-template-columns: 1fr !important; min-height: auto !important; }
+          .hero-section > div:first-child { padding: 48px 24px !important; text-align: center !important; align-items: center !important; max-width: 100% !important; }
+          .hero-section h1 { max-width: 100% !important; }
+          .hero-section p { margin-left: auto !important; margin-right: auto !important; }
+          .hero-section .hero-eyebrow { justify-content: center !important; }
+          .hero-section .hero-ctas { justify-content: center !important; align-items: center !important; flex-direction: column !important; gap: 16px !important; }
           .hero-img { min-height: 320px; }
-          .two-col { grid-template-columns: 1fr !important; gap: 36px !important; }
+          .two-col { grid-template-columns: 1fr !important; gap: 36px !important; text-align: center !important; }
+          .two-col .center-on-mobile { margin-left: auto !important; margin-right: auto !important; }
+          .two-col .center-on-mobile-flex { justify-content: center !important; }
+          .trust-bar { flex-direction: column !important; gap: 12px !important; align-items: center !important; }
           .ba-grid { grid-template-columns: repeat(2, 1fr) !important; }
           .blog-grid { grid-template-columns: 1fr !important; }
           .podcast-card { grid-template-columns: 1fr !important; }
