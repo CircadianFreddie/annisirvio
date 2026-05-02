@@ -4,7 +4,7 @@ import { useEffect, useState } from 'react'
 
 const FB_GROUP_URL = 'https://www.facebook.com/groups/1492476558925687'
 
-type LessonType = 'video' | 'pdf' | 'locked-future'
+type LessonType = 'video' | 'pdf' | 'pdf-secondary' | 'locked-future'
 
 interface Lesson {
   id: string
@@ -31,7 +31,8 @@ const CHALLENGE_DATA: Day[] = [
       { id: 'aloita-tasta', title: 'Aloita tästä', type: 'video', vimeoId: '907109498' },
       { id: 'kuinka-onnistua', title: 'Kuinka onnistua haasteessa', type: 'video', vimeoId: '907110684' },
       { id: 'ateriasuunnitelma-ohje', title: 'Ohjeistus ateriasuunnitelmaan', type: 'video', vimeoId: '907112652' },
-      { id: 'meal-plan-pdf', title: 'Lataa ateriasuunnitelma ja ostoslista', type: 'pdf', pdfPath: '/meal-plans/paiva-1.pdf' },
+      { id: 'ateriasuunnitelma-pdf', title: 'Ateriasuunnitelma', type: 'pdf', pdfPath: '/meal-plans/ateriasuunnitelma.pdf' },
+      { id: 'ostoslista-pdf', title: 'Ostoslista', type: 'pdf-secondary', pdfPath: '/meal-plans/ostoslista.pdf' },
     ],
   },
   { day: 2, title: 'Eroon makeanhimosta ja mieliteoista', unlockDate: new Date('2026-05-05T05:00:00+03:00'), lessons: [] },
@@ -169,7 +170,11 @@ function LessonRow({ lesson, isLast }: { lesson: Lesson; isLast: boolean }) {
     )
   }
 
-  if (lesson.type === 'pdf') {
+  if (lesson.type === 'pdf' || lesson.type === 'pdf-secondary') {
+    const isSecondary = lesson.type === 'pdf-secondary'
+    const btnStyle: React.CSSProperties = isSecondary
+      ? { background: 'transparent', color: 'var(--text)', padding: '8px 18px', borderRadius: '6px', fontSize: '13px', fontWeight: 500, textDecoration: 'none', flexShrink: 0, border: '1px solid var(--border)' }
+      : { background: 'var(--dark)', color: '#fff', padding: '8px 18px', borderRadius: '6px', fontSize: '13px', fontWeight: 500, textDecoration: 'none', flexShrink: 0 }
     return (
       <div style={baseRow}>
         <div style={leftGroup}>
@@ -178,7 +183,7 @@ function LessonRow({ lesson, isLast }: { lesson: Lesson; isLast: boolean }) {
           </div>
           <span style={titleSpan}>{lesson.title}</span>
         </div>
-        <a href={lesson.pdfPath} download target="_blank" rel="noopener noreferrer" style={{ background: 'var(--dark)', color: '#fff', padding: '8px 18px', borderRadius: '6px', fontSize: '13px', fontWeight: 500, textDecoration: 'none', flexShrink: 0 }}>Lataa PDF</a>
+        <a href={lesson.pdfPath} download target="_blank" rel="noopener noreferrer" style={btnStyle}>Lataa PDF</a>
       </div>
     )
   }
