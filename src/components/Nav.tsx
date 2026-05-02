@@ -7,7 +7,9 @@ import { usePathname } from 'next/navigation'
 export default function Nav() {
   const [menuOpen, setMenuOpen] = useState(false)
   const pathname = usePathname()
-  const isChallenge = pathname === '/haaste'
+  const isHaaste = pathname === '/haaste'
+  const isPortal = pathname === '/fbf-challenge'
+  const isMinimal = isHaaste || isPortal
 
   function scrollToSignup() {
     const el = document.getElementById('signup')
@@ -29,11 +31,11 @@ export default function Nav() {
         maxWidth: '1100px', margin: '0 auto', width: '100%',
         display: 'flex', alignItems: 'center', justifyContent: 'space-between',
       }}>
-        <Link href={isChallenge ? '/haaste' : '/'} style={{ display: 'flex', alignItems: 'center' }}>
+        <Link href={isHaaste ? '/haaste' : '/'} style={{ display: 'flex', alignItems: 'center' }}>
           <span style={{ fontFamily: 'var(--font-serif)', fontSize: '17px', fontWeight: 400, letterSpacing: '0.22em', textTransform: 'uppercase' }}>Anni Sirviö</span>
         </Link>
 
-        {isChallenge ? (
+        {isHaaste && (
           <button
             onClick={scrollToSignup}
             style={{
@@ -45,7 +47,9 @@ export default function Nav() {
           >
             Liity haasteeseen
           </button>
-        ) : (
+        )}
+
+        {!isMinimal && (
           <>
             <div style={{ display: 'flex', alignItems: 'center', gap: '28px' }} className="desktop-nav">
               <Link href="/#why" style={{ fontSize: '14px', color: 'var(--muted)' }}>Miksi tämä toimii</Link>
@@ -75,7 +79,7 @@ export default function Nav() {
         )}
       </div>
 
-      {!isChallenge && menuOpen && (
+      {!isMinimal && menuOpen && (
         <div style={{
           position: 'absolute', top: '64px', left: 0, right: 0,
           background: '#fff', borderBottom: '1px solid rgba(0,0,0,0.08)',
