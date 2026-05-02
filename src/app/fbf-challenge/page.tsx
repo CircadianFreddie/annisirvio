@@ -32,7 +32,6 @@ const CHALLENGE_DATA: Day[] = [
       { id: 'kuinka-onnistua', title: 'Kuinka onnistua haasteessa', type: 'video', vimeoId: '907110684' },
       { id: 'ateriasuunnitelma-ohje', title: 'Ohjeistus ateriasuunnitelmaan', type: 'video', vimeoId: '907112652' },
       { id: 'meal-plan-pdf', title: 'Lataa ateriasuunnitelma ja ostoslista', type: 'pdf', pdfPath: '/meal-plans/paiva-1.pdf' },
-      { id: 'haasteen-jalkeen', title: 'Kuinka jatkan haasteen jälkeen?', type: 'locked-future', lockedNote: 'Avautuu päivänä 5' },
     ],
   },
   { day: 2, title: 'Eroon makeanhimosta ja mieliteoista', unlockDate: new Date('2026-05-05T05:00:00+03:00'), lessons: [] },
