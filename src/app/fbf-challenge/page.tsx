@@ -53,13 +53,16 @@ function getInitialNow(): Date | null {
   return new Date()
 }
 
-const heroSection: React.CSSProperties = { background: 'var(--dark)', padding: '64px 24px 56px', textAlign: 'center' }
+const sidePad = 'clamp(12px, 4vw, 24px)'
+const cardSidePad = 'clamp(16px, 4vw, 32px)'
+
+const heroSection: React.CSSProperties = { background: 'var(--dark)', padding: `clamp(48px, 8vw, 64px) ${sidePad} clamp(40px, 8vw, 56px)`, textAlign: 'center' }
 const heroInner: React.CSSProperties = { maxWidth: '720px', margin: '0 auto' }
 const eyebrow: React.CSSProperties = { fontSize: '11px', letterSpacing: '0.14em', textTransform: 'uppercase', color: 'var(--gold)', marginBottom: '18px' }
-const heroTitle: React.CSSProperties = { fontFamily: 'var(--font-serif)', fontSize: 'clamp(32px, 4vw, 48px)', fontWeight: 400, lineHeight: 1.15, color: '#fff', marginBottom: '18px', letterSpacing: '-0.02em' }
+const heroTitle: React.CSSProperties = { fontFamily: 'var(--font-serif)', fontSize: 'clamp(28px, 6vw, 48px)', fontWeight: 400, lineHeight: 1.15, color: '#fff', marginBottom: '18px', letterSpacing: '-0.02em' }
 const heroSub: React.CSSProperties = { fontSize: '15px', color: 'rgba(255,255,255,0.6)', lineHeight: 1.7, marginBottom: '28px' }
 const fbBtn: React.CSSProperties = { background: 'rgba(255,255,255,0.08)', color: '#fff', padding: '12px 24px', borderRadius: '6px', fontSize: '14px', fontWeight: 500, textDecoration: 'none', display: 'inline-flex', alignItems: 'center', gap: '10px', border: '1px solid rgba(255,255,255,0.15)' }
-const daysSection: React.CSSProperties = { padding: '72px 24px 96px', background: '#fff' }
+const daysSection: React.CSSProperties = { padding: `clamp(48px, 8vw, 72px) ${sidePad} clamp(64px, 10vw, 96px)`, background: '#fff' }
 const daysInner: React.CSSProperties = { maxWidth: '880px', margin: '0 auto' }
 
 export default function FbfChallengePage() {
@@ -100,10 +103,10 @@ export default function FbfChallengePage() {
 
 function DaySection({ day, unlocked }: { day: Day; unlocked: boolean }) {
   const dayCard: React.CSSProperties = { marginBottom: '40px', background: unlocked ? '#fff' : 'var(--cream)', border: '1px solid var(--border)', borderRadius: '12px', overflow: 'hidden', opacity: unlocked ? 1 : 0.75 }
-  const dayHeader: React.CSSProperties = { padding: '28px 32px', borderBottom: unlocked && day.lessons.length > 0 ? '1px solid var(--border)' : 'none' }
+  const dayHeader: React.CSSProperties = { padding: `clamp(20px, 4vw, 28px) ${cardSidePad}`, borderBottom: unlocked && day.lessons.length > 0 ? '1px solid var(--border)' : 'none' }
   const headerRow: React.CSSProperties = { display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', gap: '20px', flexWrap: 'wrap' }
   const dayLabel: React.CSSProperties = { fontSize: '11px', letterSpacing: '0.14em', textTransform: 'uppercase', color: 'var(--gold)', marginBottom: '8px' }
-  const dayTitle: React.CSSProperties = { fontFamily: 'var(--font-serif)', fontSize: 'clamp(22px, 2.4vw, 28px)', fontWeight: 400, lineHeight: 1.25, color: 'var(--text)', margin: 0, letterSpacing: '-0.02em' }
+  const dayTitle: React.CSSProperties = { fontFamily: 'var(--font-serif)', fontSize: 'clamp(20px, 4vw, 28px)', fontWeight: 400, lineHeight: 1.25, color: 'var(--text)', margin: 0, letterSpacing: '-0.02em' }
   const badgeOpen: React.CSSProperties = { background: '#E8F3ED', color: '#2D6B4E', fontSize: '12px', padding: '6px 12px', borderRadius: '20px', fontWeight: 500, letterSpacing: '0.02em', display: 'inline-flex', alignItems: 'center', gap: '6px' }
   const badgeClosed: React.CSSProperties = { background: 'rgba(0,0,0,0.05)', color: 'var(--muted)', fontSize: '12px', padding: '6px 12px', borderRadius: '20px', fontWeight: 500, letterSpacing: '0.02em', display: 'inline-flex', alignItems: 'center', gap: '6px' }
 
@@ -138,7 +141,7 @@ function DaySection({ day, unlocked }: { day: Day; unlocked: boolean }) {
         </div>
       )}
       {unlocked && day.lessons.length === 0 && (
-        <div style={{ padding: '20px 32px 28px', fontSize: '14px', color: 'var(--muted)', fontStyle: 'italic' }}>Sisältö ladataan pian.</div>
+        <div style={{ padding: `20px ${cardSidePad} 28px`, fontSize: '14px', color: 'var(--muted)', fontStyle: 'italic' }}>Sisältö ladataan pian.</div>
       )}
     </div>
   )
@@ -146,7 +149,7 @@ function DaySection({ day, unlocked }: { day: Day; unlocked: boolean }) {
 
 function LessonRow({ lesson, isLast }: { lesson: Lesson; isLast: boolean }) {
   const [expanded, setExpanded] = useState(false)
-  const baseRow: React.CSSProperties = { padding: '18px 32px', borderBottom: isLast ? 'none' : '1px solid var(--border)', display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: '16px', flexWrap: 'wrap' }
+  const baseRow: React.CSSProperties = { padding: `18px ${cardSidePad}`, borderBottom: isLast ? 'none' : '1px solid var(--border)', display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: '16px', flexWrap: 'wrap' }
   const iconBox: React.CSSProperties = { width: '32px', height: '32px', borderRadius: '8px', background: 'var(--cream)', color: 'var(--gold)', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }
   const iconBoxMuted: React.CSSProperties = { width: '32px', height: '32px', borderRadius: '8px', background: 'rgba(0,0,0,0.05)', color: 'var(--muted)', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }
   const titleSpan: React.CSSProperties = { fontSize: '15px', color: 'var(--text)', fontWeight: 500 }
@@ -182,7 +185,7 @@ function LessonRow({ lesson, isLast }: { lesson: Lesson; isLast: boolean }) {
 
   return (
     <div style={{ borderBottom: isLast ? 'none' : '1px solid var(--border)' }}>
-      <button onClick={() => setExpanded(!expanded)} style={{ width: '100%', padding: '18px 32px', background: 'transparent', border: 'none', cursor: 'pointer', display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: '16px', fontFamily: 'inherit', textAlign: 'left' }}>
+      <button onClick={() => setExpanded(!expanded)} style={{ width: '100%', padding: `18px ${cardSidePad}`, background: 'transparent', border: 'none', cursor: 'pointer', display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: '16px', fontFamily: 'inherit', textAlign: 'left' }}>
         <div style={leftGroup}>
           <div style={iconBox}>
             <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"/></svg>
@@ -192,7 +195,7 @@ function LessonRow({ lesson, isLast }: { lesson: Lesson; isLast: boolean }) {
         <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--muted)" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" style={{ transform: expanded ? 'rotate(180deg)' : 'rotate(0)', transition: 'transform 0.2s', flexShrink: 0 }}><polyline points="6 9 12 15 18 9"/></svg>
       </button>
       {expanded && lesson.vimeoId && (
-        <div style={{ padding: '0 32px 28px' }}>
+        <div style={{ padding: `0 ${cardSidePad} 28px` }}>
           <div style={{ position: 'relative', aspectRatio: '16/9', background: '#000', borderRadius: '8px', overflow: 'hidden' }}>
             <iframe src={`https://player.vimeo.com/video/${lesson.vimeoId}`} allow="autoplay; fullscreen; picture-in-picture" allowFullScreen style={{ position: 'absolute', top: 0, left: 0, width: '100%', height: '100%', border: 0 }} title={lesson.title} />
           </div>
